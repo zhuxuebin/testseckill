@@ -10,38 +10,47 @@ import org.seckill.exception.SeckillException;
 import java.util.List;
 
 /**
- * ÒµÎñ½Ó¿Ú£ºÕ¾ÔÚÊ¹ÓÃÕß½Ç¶ÈÉè¼Æ½Ó¿Ú
- * Èı¸ö·½Ãæ£º·½·¨¶¨ÒåÁ£¶È£¬²ÎÊı£¬·µ»ØÀàĞÍ£¨return ÀàĞÍ/Òì³££©
+ * Òµï¿½ï¿½Ó¿Ú£ï¿½Õ¾ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ß½Ç¶ï¿½ï¿½ï¿½Æ½Ó¿ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ£ºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½return ï¿½ï¿½ï¿½ï¿½/ï¿½ì³£ï¿½ï¿½
  *
  * Created by xuery on 2016/6/27.
  */
 public interface SeckillService {
     /**
-     * ²éÑ¯ËùÓĞÃëÉ±¼ÇÂ¼
+     * ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±ï¿½ï¿½Â¼
      * @return
      */
     List<Seckill> getSeckillList();
 
     /**
-     * ²éÑ¯µ¥¸öÃëÉ±¼ÇÂ¼
+     * ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±ï¿½ï¿½Â¼
      * @param seckillId
      * @return
      */
     Seckill getById(long seckillId);
 
     /**
-     * ÃëÉ±¿ªÆôÊ±Êä³öÃëÉ±½Ó¿ÚµØÖ·£¬
-     * ¸ºÔğÊä³öÏµÍ³Ê±¼äºÍÃëÉ±Ê±¼ä
+     * ï¿½ï¿½É±ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½É±ï¿½Ó¿Úµï¿½Ö·ï¿½ï¿½
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³Ê±ï¿½ï¿½ï¿½ï¿½ï¿½É±Ê±ï¿½ï¿½
      * @param seckillId
      */
     Exposer exportSeckillUrl(long seckillId);
 
     /**
-     * Ö´ĞĞÃëÉ±²Ù×÷,°üÀ¨¸÷ÖÖÃëÉ±Òì³£
+     * Ö´ï¿½ï¿½ï¿½ï¿½É±ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É±ï¿½ì³£
      * @param seckillId
      * @param userPhone
      * @param md5
      */
     SeckillExecution executeSeckill(long seckillId,long userPhone,String md5)
             throws SeckillException,RepeatKillException,SeckillCloseException;
+
+    /**
+     * åœ¨mysqlæ‰§è¡Œç§’æ€æ“ä½œ
+     * @param seckillId
+     * @param userPhone
+     * @param md5
+     * @return
+     */
+    SeckillExecution executeSeckillProcedure(long seckillId,long userPhone,String md5);
 }

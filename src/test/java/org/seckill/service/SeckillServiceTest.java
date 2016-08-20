@@ -19,14 +19,14 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- *SeckillService²âÊÔÀà
+ *SeckillServiceï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * Created by xuery on 2016/6/27.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({
             "classpath:spring/spring-dao.xml",
             "classpath:spring/spring-service.xml"
-            })   //¸æËßjunit SpringÅäÖÃÎÄ¼þ
+            })   //ï¿½ï¿½ï¿½ï¿½junit Springï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 public class SeckillServiceTest {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -51,10 +51,10 @@ public class SeckillServiceTest {
         Exposer exposer = seckillService.exportSeckillUrl(1001);
         logger.info("exposer={}", exposer);
         /**
-         * ÃëÉ±Ê±¼ä²»¶Ô
+         * ï¿½ï¿½É±Ê±ï¿½ä²»ï¿½ï¿½
          *Exposer{exposed=false, md5='null', seckillId=1001, now=1467028509100, start=1446307200000, end=1446393600000}
          *
-         * ÃëÉ±Ê±¼ä¶Ô
+         * ï¿½ï¿½É±Ê±ï¿½ï¿½ï¿½
          * Exposer{exposed=true, md5='ebbec078d02261e258c4af348089ca90', seckillId=1001, now=0, start=0, end=0}
          * */
     }
@@ -72,6 +72,17 @@ public class SeckillServiceTest {
         }catch(SeckillException e){
             logger.error(e.getMessage());
         }
+    }
 
+    @Test
+    public void testExecuteSeckillByProcedure(){
+        long seckillId = 1003;
+        long phone = 13680111100l;
+        Exposer exposer = seckillService.exportSeckillUrl(seckillId);
+        if(exposer.isExposed()){
+            String md5 = exposer.getMd5();
+            SeckillExecution execution = seckillService.executeSeckillProcedure(seckillId, phone, md5);
+            logger.info("testByProcedure:"+execution.getStateInfo());
+        }
     }
 }

@@ -1,9 +1,9 @@
 package org.common.service;
 
 import com.google.common.collect.Iterables;
-import com.liangyibang.common.domain.BaseModel;
-import com.liangyibang.common.persistence.BaseExample;
-import com.liangyibang.common.persistence.BaseExampleDao;
+import org.common.entity.BaseModel;
+import org.common.persistence.BaseExample;
+import org.common.persistence.BaseExampleDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,7 +1,7 @@
 package org.common.persistence;
 
-import com.liangyibang.common.domain.BaseModel;
 import org.apache.ibatis.annotations.Param;
+import org.common.entity.BaseModel;
 
 import java.io.Serializable;
 import java.util.List;

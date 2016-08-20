@@ -5,31 +5,38 @@ import org.seckill.entity.Seckill;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Xuery on 2016/6/19.
  */
 public interface SeckillDao {
     /**
-     * ¼õ¿â´æ
+     * ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param seckillId
      * @param killTime
-     * @return Èç¹ûÓ°ÏìĞĞÊı>1.±íÊ¾¸üĞÂµÄ¼ÇÂ¼ĞĞÊı
+     * @return ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½>1.ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ÂµÄ¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
      * */
     int reduceNumber(@Param("seckillId")long seckillId,@Param("killTime")Date killTime);
 
     /**
-     *¸ù¾İid²éÑ¯ÃëÉ±¶ÔÏó
+     *ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½ï¿½É±ï¿½ï¿½ï¿½ï¿½
      * @param seckillId
      * @return
      */
     Seckill queryById(long seckillId);
 
     /**
-     * ¸ù¾İÆ«ÒÆÁ¿²éÑ¯ÃëÉ±ÉÌÆ·ÁĞ±í
+     * ï¿½ï¿½ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½É±ï¿½ï¿½Æ·ï¿½Ğ±ï¿½
      * @param offset
      * @param limit
      * @return
      */
     List<Seckill> queryAll(@Param("offset")int offset,@Param("limit")int limit);
+
+    /**
+     * ä½¿ç”¨å­˜å‚¨è¿‡ç¨‹è¿›è¡Œç§’æ€
+     * @param paramMap
+     */
+    void killByProcedure(Map<String,Object> paramMap);
 }
